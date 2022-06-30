@@ -28,11 +28,11 @@
 }
 
 .correct {
-  background: green;
+  background: linear-gradient(32deg, green, 0%, green);
 }
 
 .incorect {
-  background: red;
+  background: linear-gradient(32deg, green 0%, green);
 }
 
 #display {
@@ -49,8 +49,12 @@
   text-align: center;
 }
 
-@media screen and (max-width: 800px) {
+.h6 {
+  font-size: 0.5rem;
+}
+
+@media screen and (max-width: 700px) {
   .choice-container {
-    min-width: 45rem;
+    min-width: 35rem;
   }
 }
