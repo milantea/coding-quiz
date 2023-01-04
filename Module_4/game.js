@@ -2,19 +2,20 @@ const question = document.querySelector("#question");
 const progressText = document.querySelector("#progressMessage");
 const choices = Array.from(document.querySelectorAll(".choice-text"));
 const scoreText = document.querySelector("#score");
+const timerElement = document.querySelector(".timerCount");
 
 let currentQuestion = {};
 let acceptingAnswers = true;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
+let sec;
 
 function timer() {
-  let sec = 30;
   let timer = setInterval(function () {
-    document.getElementById("timeDisplay").innerHTML = "00:" + sec;
     sec--;
-    if (sec < 0) {
+    timerElement.textContent = sec;
+    if (sec >= 0) {
       clearInterval(timer);
     }
   }, 1000);
@@ -69,10 +70,12 @@ const SCORE_POINTS = 100;
 const MAX_QUESTIONS = 5;
 
 startGame = () => {
+  sec = 30;
   questionCounter = 0;
   score = 0;
   availableQuestions = [...questions]; //spread operator turns variables into strings
   getNewQuestion();
+  timer();
 };
 
 getNewQuestion = () => {
